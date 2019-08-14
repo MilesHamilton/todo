@@ -1,10 +1,16 @@
 var todoList = {
-    todos: ['item1','item2','item3'],
+    todos: [],
     displayTodos: function() {
         console.log('My Todos', this.todos);
     },
-    addTodo: function(todo) {
-        this.todo.push(todo);
+    addTodo: function(todoText) {
+        this.todo.push({
+            todoText: todoText,
+            // first todoText names the property (ex. .todoText to grab properties)
+            // second todoText calls the function and computes whatever you pass in (ex. "addTodo("hi") = "hi"")
+            completed: false
+        });
+        // the "this" method is used to refer to OBJECTS within your function
         this.displayTodos();
     },
     changeTodo: function(position, newValue) {
