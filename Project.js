@@ -33,7 +33,7 @@ var todoList = {
         this.displayTodos();
     },
     toggleCompleted: function(position) {
-        var todo = this.todos [position];
+        var todo = this.todos[position];
         todo.completed = !todo.completed;
         this.displayTodos();
     },
@@ -41,17 +41,17 @@ var todoList = {
         var totalTodos = this.todos.length
         var completedTodos = 0;
 
-    for (var i = 0; i < totalTodos.length; i++) {
+    for (var i = 0; i < totalTodos; i++) {
         if(this.todos[i].completed === true) {
             completedTodos++;
         }
     }
         if (completedTodos === totalTodos) {
-            for (var i =0; i < totalTodos; i++) {
+            for (var i = 0; i < totalTodos; i++) {
                 this.todos[i].completed = false;
             }
         } else {
-            for (let i = 0; i < totalTodos; i++) {
+            for (var i = 0; i < totalTodos; i++) {
                 this.todos[i].completed = true;
                 
             }
@@ -60,3 +60,33 @@ var todoList = {
     }
 };
 
+var handlers = {
+    displayTodos: function () {
+        todoList.displayTodos();
+    },
+    addTodo: function () {
+        var addTodoTextInput = document.querySelector('#addTodoTextInput');
+        todoList.addTodo(addTodoTextInput.value);
+        addTodoTextInput.value = ''
+    },
+    changeTodo: function () {
+        var changeTodoPositionInput = document.querySelector('#changeTodoPositionInput')
+        var changeTodoTextInput = document.querySelector('#changeTodoTextInput')
+        todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value)
+        changeTodoPositionInput.value = ''
+        changeTodoTextInput.value = ''
+    },
+    deleteTodo: function () {
+        var deleteTodoPositionInput = document.querySelector('#deleteTodoPositionInput')
+        todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber)
+        deleteTodoPositionInput.value=''
+    },
+    toggleCompleted: function () {
+        var toggleCompletedPositionInput = document.querySelector('#toggleCompletedPositionInput')
+        todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber)
+        toggleCompletedPositionInput.valueAsNumber=''
+    },
+    toggleAll: function () {
+        todoList.toggleAll()
+    }
+}
